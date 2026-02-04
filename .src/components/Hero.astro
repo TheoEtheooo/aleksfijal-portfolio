@@ -1,0 +1,51 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img 
+      src="https://picsum.photos/1920/1080?random=1" 
+      alt="Hero" 
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-bg/30 via-transparent to-dark-bg/90"></div>
+  </div>
+  
+  <!-- Content -->
+  <div class="relative h-full flex flex-col justify-end pb-20 px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- Tag -->
+    <div class="inline-flex items-center gap-2 mb-6 w-fit">
+      <div class="w-2 h-2 bg-accent-cyan rounded-full"></div>
+      <span class="text-sm uppercase tracking-widest text-gray-400">Fotograf koncertowy i eventowy</span>
+    </div>
+    
+    <!-- Heading -->
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-black mb-6 leading-tight">
+      Zatrzymuję emocje<br/>
+      <span class="text-accent-cyan">zanim zgasną światła</span>
+    </h1>
+    
+    <p class="text-lg md:text-xl text-gray-300 max-w-3xl mb-10">
+      <strong>Koncerty, festiwale, teledyski, portrety, eventy</strong> – fotografia dla artystów, którzy chcą uchwycić emocje i energię sceny w ikonicznych obrazach.
+    </p>
+    
+    <!-- CTAs -->
+    <div class="flex flex-wrap gap-4">
+      <a href="#wspolpraca" class="px-8 py-4 bg-accent-orange text-white font-bold uppercase text-sm rounded-md hover:bg-accent-orange/90 transition-all">
+        Współpraca
+      </a>
+      <a href="#o-mnie" class="px-8 py-4 border-2 border-accent-cyan text-accent-cyan font-bold uppercase text-sm rounded-md hover:bg-accent-cyan/10 transition-all">
+        O mnie
+      </a>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>

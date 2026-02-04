@@ -1,0 +1,56 @@
+---
+// src/components/Navbar.astro
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-dark-bg/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-accent-cyan rounded-full"></div>
+        <span class="text-xl font-heading font-bold uppercase tracking-tight">
+          Maciek<br/>Czyżewski
+        </span>
+      </a>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="#o-mnie" class="text-sm uppercase tracking-wider text-gray-300 hover:text-accent-cyan transition-colors">O mnie</a></li>
+        <li><a href="#wspolpraca" class="text-sm uppercase tracking-wider text-gray-300 hover:text-accent-cyan transition-colors">Współpraca</a></li>
+        <li class="relative group">
+          <button class="text-sm uppercase tracking-wider text-gray-300 hover:text-accent-cyan transition-colors">
+            Portfolio
+          </button>
+          <!-- Dropdown będzie tutaj -->
+        </li>
+        <li><a href="/blog" class="text-sm uppercase tracking-wider text-gray-300 hover:text-accent-cyan transition-colors">Blog</a></li>
+        <li>
+          <a href="#kontakt" class="px-6 py-2 bg-accent-cyan text-dark-bg font-bold uppercase text-sm rounded-md hover:bg-accent-cyan/90 transition-all">
+            Skontaktuj się
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Mobile Toggle -->
+      <button id="mobile-menu-btn" class="lg:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let lastScrollY = window.scrollY;
+  const navbar = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      navbar?.classList.add('-translate-y-full');
+    } else {
+      navbar?.classList.remove('-translate-y-full');
+    }
+    lastScrollY = window.scrollY;
+  });
+</script>

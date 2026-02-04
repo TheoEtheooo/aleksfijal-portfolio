@@ -1,0 +1,67 @@
+---
+const stats = [
+  { number: 150, label: 'Koncertów', suffix: '+' },
+  { number: 12, label: 'Festiwali', suffix: '' },
+  { number: 50, label: 'Eventów', suffix: '+' },
+  { number: 3, label: 'Okładek', suffix: '' },
+  { number: 5, label: 'Tras', suffix: '' },
+  { number: 8, label: 'Teledysków', suffix: '' },
+];
+---
+
+<section class="py-32 bg-gradient-to-b from-dark-bg to-dark-bg/50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12">
+      {stats.map((stat) => (
+        <div class="text-center group">
+          <div class="text-5xl lg:text-6xl font-heading font-bold text-neon-purple group-hover:text-glow-purple transition-all duration-300 mb-3">
+            <span class="counter" data-target={stat.number}>0</span>{stat.suffix}
+          </div>
+          <div class="text-sm uppercase tracking-widest text-gray-500 font-mono">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  
+  const animateCounter = (counter: Element) => {
+    const target = parseInt(counter.getAttribute('data-target') || '0');
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        counter.textContent = Math.floor(current).toString();
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target.toString();
+      }
+    };
+    
+    updateCounter();
+  };
+  
+  // Intersection Observer to trigger animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const counter = entry.target.querySelector('.counter');
+        if (counter && counter.textContent === '0') {
+          animateCounter(counter);
+        }
+      }
+    });
+  });
+  
+  counters.forEach((counter) => {
+    observer.observe(counter.parentElement!);
+  });
+</script>

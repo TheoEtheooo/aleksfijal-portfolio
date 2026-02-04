@@ -1,0 +1,24 @@
+---
+// src/components/MassiveTypography.astro
+const words = [
+  { text: 'LUDZIE', image: 'https://picsum.photos/1920/1080?random=10' },
+  { text: 'MUZYKA', image: 'https://picsum.photos/1920/1080?random=11' },
+  { text: 'KONCERTY', image: 'https://picsum.photos/1920/1080?random=12' },
+  { text: 'FESTIWALE', image: 'https://picsum.photos/1920/1080?random=13' },
+];
+---
+
+<section class="py-32 bg-dark-bg relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    {words.map((word) => (
+      <div class="mb-4 overflow-hidden">
+        <h2 
+          class="text-[12vw] md:text-[15vw] lg:text-[18vw] font-heading font-black leading-none tracking-tighter text-gradient-fill"
+          style={`background-image: url('${word.image}');`}
+        >
+          {word.text}
+        </h2>
+      </div>
+    ))}
+  </div>
+</section>

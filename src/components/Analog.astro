@@ -1,0 +1,27 @@
+---
+// src/components/Analog.astro
+---
+<section id="analog" class="py-32 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <div class="inline-block bg-white text-black font-mono text-xs font-bold px-2 py-1 mb-4 transform -rotate-2">35mm & 120mm</div>
+                    <h2 class="font-grotesk text-5xl md:text-7xl font-bold text-white mb-6">ANALOG <br/><span class="text-gray-600">IS NOT DEAD</span></h2>
+                    <p class="font-inter text-gray-400 mb-8 max-w-md">
+                        Czyste srebro. Nikon AF i Pentacon Six. Bez retuszu, bez cyfrowego szumu. Tylko ziarno i moment.
+                    </p>
+                    <div class="flex gap-4 font-mono text-xs text-gray-500">
+                        <span class="border border-gray-800 px-3 py-1 rounded">ILFORD HP5</span>
+                        <span class="border border-gray-800 px-3 py-1 rounded">KODAK PORTRA</span>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1518331393630-3330df331777?q=80&w=800" class="grayscale hover:grayscale-0 transition-all duration-500 rounded-lg border border-white/10" alt="Analog 1">
+                    <img src="https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?q=80&w=800" class="grayscale hover:grayscale-0 transition-all duration-500 rounded-lg border border-white/10 mt-8" alt="Analog 2">
+                </div>
+            </div>
+        </div>
+    </section>
