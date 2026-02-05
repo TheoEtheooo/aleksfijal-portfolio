@@ -9,8 +9,15 @@ const images = [
     { src: "/images/portfolio/4.jpg", title: "Metal Night", category: "Koncert" },
     { src: "/images/portfolio/5.jpg", title: "Street Life", category: "Analog" },
     { src: "/images/portfolio/6.jpg", title: "Stage Fog", category: "Koncert" },
-    { src: "/images/portfolio/7.jpg", title: "Crowd", category: "Festiwal" },
-    { src: "/images/portfolio/8.jpg", title: "Neon Portraits", category: "Portret" },
+    { src: "/images/portfolio/7.jpg", title: "Crowd Surfing", category: "Koncert" },
+    { src: "/images/portfolio/8.jpg", title: "Intimate Moment", category: "Portret" },
+    { src: "/images/portfolio/9.jpg", title: "City Lights", category: "Analog" },
+    { src: "/images/portfolio/10.jpg", title: "Gritty Vibes", category: "Event" },
+    { src: "/images/portfolio/11.jpg", title: "Bass Drop", category: "Koncert" },
+    { src: "/images/portfolio/12.jpg", title: "Moody Portrait", category: "Portret" },
+    { src: "/images/portfolio/13.jpg", title: "Analog Dreams", category: "Analog" },
+    { src: "/images/portfolio/14.jpg", title: "Live Wire", category: "Koncert" },
+    { src: "/images/portfolio/15.jpg", title: "Event Chaos", category: "Event" },
 ];
 ---
 
@@ -42,16 +49,17 @@ const images = [
             </h2>
         </div>
 
-        <div class="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
+        <div class="masonry-grid -mx-3">
+            <div class="masonry-sizer w-full sm:w-1/2 lg:w-1/3"></div>
             {images.map((img) => (
-                <div class="relative group break-inside-avoid">
+                <div class="masonry-item w-full sm:w-1/2 lg:w-1/3 p-3 relative group">
                     <div class="relative overflow-hidden rounded-lg border border-white/10 bg-zinc-900 transition-all duration-500 group-hover:border-[#00f0ff]/50">
-                        <img 
+                        <Image 
                             src={img.src} 
                             alt={img.title}
-                            class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-105"
-                            loading="lazy"
-                            decoding="async"
+                            class="w-full h-auto transition-all duration-700 ease-in-out group-hover:scale-105"
+                            width={600}
+                            height={800}
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                             <span class="font-mono text-[10px] text-[#00f0ff] uppercase tracking-widest mb-1">{img.category}</span>
@@ -85,7 +93,7 @@ const images = [
                 <div class="relative group">
                     <Image 
                         src="https://images.unsplash.com/photo-1518331393630-3330df331777?q=80&w=800" 
-                        class="relative grayscale hover:grayscale-0 transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[-3deg] group-hover:rotate-0" 
+                        class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[-3deg] group-hover:rotate-0" 
                         alt="Analog 1"
                         width={800}
                         height={600}
@@ -94,12 +102,51 @@ const images = [
                 <div class="relative group pt-16">
                     <Image 
                         src="https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?q=80&w=800" 
-                        class="relative grayscale hover:grayscale-0 transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[3deg] group-hover:rotate-0" 
+                        class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[3deg] group-hover:rotate-0" 
                         alt="Analog 2"
                         width={800}
                         height={600}
                     />
                 </div>
+            </div>
+        </div>
+
+        <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 items-start">
+            <div class="relative group md:pt-8">
+                <Image 
+                    src="https://images.unsplash.com/photo-1502945015378-d24de35e5b7c?q=80&w=800" 
+                    class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[2deg] group-hover:rotate-0" 
+                    alt="Analog 3"
+                    width={800}
+                    height={600}
+                />
+            </div>
+            <div class="relative group">
+                <Image 
+                    src="https://images.unsplash.com/photo-1516883344328-85c4a3b9b4a1?q=80&w=800" 
+                    class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[-4deg] group-hover:rotate-0" 
+                    alt="Analog 4"
+                    width={800}
+                    height={600}
+                />
+            </div>
+            <div class="relative group md:pt-12">
+                <Image 
+                    src="https://images.unsplash.com/photo-1519692458399-65e795a645a2?q=80&w=800" 
+                    class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[5deg] group-hover:rotate-0" 
+                    alt="Analog 5"
+                    width={800}
+                    height={600}
+                />
+            </div>
+            <div class="relative group md:pt-4">
+                <Image 
+                    src="https://images.unsplash.com/photo-1505144808419-1957a94ca61e?q=80&w=800" 
+                    class="relative transition-all duration-700 rounded-sm border-[8px] md:border-[12px] border-white shadow-2xl rotate-[-2deg] group-hover:rotate-0" 
+                    alt="Analog 6"
+                    width={800}
+                    height={600}
+                />
             </div>
         </div>
     </section>
@@ -131,3 +178,19 @@ const images = [
         }
     }
 </style>
+
+<script>
+    import Masonry from 'masonry-layout';
+    import imagesLoaded from 'imagesloaded';
+
+    const grid = document.querySelector('.masonry-grid');
+    if (grid) {
+        imagesLoaded(grid, () => {
+            new Masonry(grid, {
+                itemSelector: '.masonry-item',
+                columnWidth: '.masonry-sizer',
+                percentPosition: true
+            });
+        });
+    }
+</script>
