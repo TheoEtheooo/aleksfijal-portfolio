@@ -23,6 +23,12 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-[#0a0a0a] text-gray-200 font-inter overflow-x-hidden selection:bg-[#7000ff] selection:text-white">
 		<slot />
+
+		<!-- Lightbox Modal -->
+		<div id="lightbox-modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 z-[200] opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true">
+			<img id="lightbox-image" src="" alt="Powiększone zdjęcie" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg" />
+			<button id="lightbox-close" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-5xl font-light leading-none hover:text-zinc-400 transition-colors" aria-label="Zamknij powiększenie">&times;</button>
+		</div>
 	</body>
 </html>
 
@@ -55,3 +61,40 @@ const { title } = Astro.props;
         background: var(--neon-purple); 
     }
 </style>
+
+<script is:inline>
+	const modal = document.getElementById('lightbox-modal');
+	const modalImage = document.getElementById('lightbox-image');
+	const closeModalBtn = document.getElementById('lightbox-close');
+
+	function openModal(src) {
+		if (!modal || !modalImage) return;
+		modalImage.src = src;
+		modal.classList.remove('opacity-0', 'pointer-events-none');
+		document.body.style.overflow = 'hidden'; // Prevent background scrolling
+	}
+
+	function closeModal() {
+		if (!modal) return;
+		modal.classList.add('opacity-0', 'pointer-events-none');
+		document.body.style.overflow = ''; // Restore scrolling
+	}
+
+	// Open modal
+	document.addEventListener('click', function (e) {
+		const trigger = e.target.closest('.lightbox-trigger');
+		if (trigger) {
+			e.preventDefault();
+			openModal(trigger.href);
+		}
+	});
+
+	// Close modal actions
+	closeModalBtn?.addEventListener('click', closeModal);
+	modal?.addEventListener('click', (e) => {
+		if (e.target === modal) closeModal();
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) closeModal();
+	});
+</script>

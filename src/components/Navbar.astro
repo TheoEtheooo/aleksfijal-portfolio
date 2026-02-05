@@ -1,7 +1,7 @@
 ---
 // src/components/Navbar.astro
 ---
-<nav id="main-nav" class="fixed top-6 left-0 w-full z-50 transition-all duration-500 ease-out">
+<nav id="main-nav" class="fixed top-6 left-0 w-full z-50 transition-all duration-500 ease-out animate-nav-enter">
     <div class="max-w-[1200px] mx-auto px-4">
         <div class="bg-black/80 backdrop-blur-xl rounded-full flex justify-between items-center px-10 py-3 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5">
             
@@ -11,12 +11,30 @@
             </a>
 
             <div class="hidden lg:flex gap-6 xl:gap-8 items-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
-                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
-                <a href="#koncerty" class="hover:text-[#00f0ff] transition-colors">Koncerty</a>
-                <a href="#eventy" class="hover:text-[#00f0ff] transition-colors">Eventy</a>
-                <a href="#portrety" class="hover:text-[#00f0ff] transition-colors">Portrety</a>
-                <a href="#analog" class="hover:text-[#00f0ff] transition-colors">Analog</a>
-                <a href="#about" class="hover:text-white transition-colors">O mnie</a>
+                <a href="/#portfolio" class="relative group hover:text-white transition-colors duration-300">
+                    <span>Portfolio</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/koncerty" class="relative group hover:text-[#00f0ff] transition-colors duration-300">
+                    <span>Koncerty</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/eventy" class="relative group hover:text-[#00f0ff] transition-colors duration-300">
+                    <span>Eventy</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/portrety" class="relative group hover:text-[#00f0ff] transition-colors duration-300">
+                    <span>Portrety</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/#analog" class="relative group hover:text-[#00f0ff] transition-colors duration-300">
+                    <span>Analog</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="/#aboutme" class="relative group hover:text-white transition-colors duration-300">
+                    <span>O mnie</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#00f0ff] transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </div>
             
             <button id="menu-trigger" class="lg:hidden text-white font-mono text-[10px] tracking-widest uppercase outline-none">
@@ -33,12 +51,12 @@
 
     <div class="flex flex-col gap-6">
         <span class="font-mono text-[#00f0ff] text-[10px] tracking-[0.5em] uppercase mb-4">Nawigacja</span>
-        <a href="#portfolio" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portfolio</a>
-        <a href="#koncerty" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Koncerty</a>
-        <a href="#eventy" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Eventy</a>
-        <a href="#portrety" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portrety</a>
-        <a href="#analog" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Analog</a>
-        <a href="#about" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">O mnie</a>
+        <a href="/#portfolio" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portfolio</a>
+        <a href="/koncerty" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Koncerty</a>
+        <a href="/eventy" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Eventy</a>
+        <a href="/portrety" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portrety</a>
+        <a href="/#analog" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Analog</a>
+        <a href="/#aboutme" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">O mnie</a>
     </div>
 
     <div class="absolute bottom-12 left-10 right-10 flex justify-between items-end border-t border-white/10 pt-8">
@@ -65,6 +83,16 @@
     /* Wyłączenie scrolla na body, gdy menu jest otwarte */
     :global(body.menu-open) {
         overflow: hidden;
+    }
+
+    @keyframes navEnter {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .animate-nav-enter {
+        animation: navEnter 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: 0.2s;
     }
 </style>
 

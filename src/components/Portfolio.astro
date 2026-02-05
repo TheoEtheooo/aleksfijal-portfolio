@@ -28,24 +28,29 @@ const images = [
 
     <section id="portfolio" class="relative z-10 pt-32 pb-20 max-w-[1400px] mx-auto px-6">
         <div class="mb-20">
-            <div class="inline-block bg-[#00f0ff] text-black font-mono text-xs font-bold px-2 py-1 mb-4 transform -rotate-1 uppercase">
-                Wybrane Prace
-            </div>
             <h2 class="font-black text-6xl md:text-8xl text-white mb-6 uppercase tracking-tighter leading-none">
-                Portfolio <br/>
-                <div class="relative inline-block pr-2">
-                    <!-- Bottom layer (the gradient outline) -->
-                    <span
-                        aria-hidden="true"
-                        class="absolute inset-0 text-outline-gradient"
-                    >
-                        2024—{currentYear}
+                <span class="inline-flex flex-col items-center gap-4">
+                    <span class="relative inline-block overflow-hidden bg-black transform -rotate-1">
+                        <span class="absolute inset-0">
+                            <span class="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#00f0ff_360deg)]"></span>
+                        </span>
+                        <span class="absolute inset-[3px] bg-black"></span>
+                        <span class="relative z-10 inline-block px-4 md:px-6 py-1 md:py-2 text-white">Wybrane Prace</span>
                     </span>
-                    <!-- Top layer (the regular text, masking the center) -->
-                    <span class="relative font-outline-mask">
-                        2024—{currentYear}
-                    </span>
-                </div>
+                    <div class="relative inline-block pr-2">
+                        <!-- Bottom layer (the gradient outline) -->
+                        <span
+                            aria-hidden="true"
+                            class="absolute inset-0 text-outline-gradient"
+                        >
+                            2024 — {currentYear}
+                        </span>
+                        <!-- Top layer (the regular text, masking the center) -->
+                        <span class="relative font-outline-mask">
+                            2024 — {currentYear}
+                        </span>
+                    </div>
+                </span>
             </h2>
         </div>
 
@@ -81,11 +86,11 @@ const images = [
                     ANALOG <br/><span class="text-zinc-700">IS NOT DEAD</span>
                 </h2>
                 <p class="font-mono text-sm text-zinc-500 mb-8 max-w-md leading-relaxed">
-                    Czyste srebro. Nikon AF i Pentacon Six. Bez retuszu, bez cyfrowego szumu. Tylko ziarno i moment uchwycony na emulsji.
+                    Żadnych wyświetlaczy i natychmiastowych podglądów. Wybieram analog, gdy moment wymaga skupienia i unikalnego klimatu.
                 </p>
                 <div class="flex gap-4 font-mono text-[10px] text-zinc-600">
-                    <span class="border border-zinc-800 px-4 py-1.5 rounded-full uppercase tracking-widest hover:text-white transition-colors cursor-default">Ilford HP5</span>
-                    <span class="border border-zinc-800 px-4 py-1.5 rounded-full uppercase tracking-widest hover:text-white transition-colors cursor-default">Kodak Portra</span>
+                    <span class="border border-zinc-800 px-4 py-1.5 rounded-full uppercase tracking-widest hover:text-white transition-colors cursor-default">Ilford HP5+</span>
+                    <span class="border border-zinc-800 px-4 py-1.5 rounded-full uppercase tracking-widest hover:text-white transition-colors cursor-default">Kentmere 400</span>
                 </div>
             </div>
 
