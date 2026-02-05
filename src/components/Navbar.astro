@@ -2,71 +2,109 @@
 // src/components/Navbar.astro
 ---
 <nav id="main-nav" class="fixed top-6 left-0 w-full z-50 transition-all duration-500 ease-out">
-    <div class="max-w-[1000px] mx-auto px-4">
-        <div class="bg-black/80 backdrop-blur-xl rounded-full flex justify-between items-center pl-10 pr-2 py-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)]">
+    <div class="max-w-[1200px] mx-auto px-4">
+        <div class="bg-black/80 backdrop-blur-xl rounded-full flex justify-between items-center px-10 py-3 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] border border-white/5">
             
-            <a href="/" class="text-white text-2xl font-black uppercase tracking-[-0.05em] leading-none hover:text-[#00f0ff] transition-colors duration-300">
-                Aleks Fijał
+            <a href="/" class="flex gap-2 text-white text-xl md:text-2xl font-black uppercase tracking-[-0.05em] leading-none hover:text-[#00f0ff] transition-colors duration-300">
+                <span>Aleksander</span>
+                <span>Fijał</span>
             </a>
 
-            <div class="hidden md:flex gap-8 items-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+            <div class="hidden lg:flex gap-6 xl:gap-8 items-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
                 <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="#koncerty" class="hover:text-[#00f0ff] transition-colors">Koncerty</a>
+                <a href="#eventy" class="hover:text-[#00f0ff] transition-colors">Eventy</a>
+                <a href="#portrety" class="hover:text-[#00f0ff] transition-colors">Portrety</a>
+                <a href="#analog" class="hover:text-[#00f0ff] transition-colors">Analog</a>
                 <a href="#about" class="hover:text-white transition-colors">O mnie</a>
             </div>
-
-            <div class="relative group">
-                <a href="#contact" class="relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-full bg-black transition-transform active:scale-95">
-                    
-                    <span class="absolute inset-0">
-                        <span class="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#00f0ff_360deg)] group-hover:bg-[conic-gradient(from_0deg,transparent_0deg,transparent_180deg,#f2ff00_360deg)]"></span>
-                    </span>
-
-                    <span class="absolute inset-[2px] bg-[#0a0a0a] rounded-full group-hover:bg-zinc-900 transition-colors"></span>
-
-                    <span class="relative font-mono text-[11px] font-bold text-white uppercase tracking-widest group-hover:text-[#00f0ff]">
-                        Kontakt
-                    </span>
-                </a>
-            </div>
+            
+            <button id="menu-trigger" class="lg:hidden text-white font-mono text-[10px] tracking-widest uppercase outline-none">
+                [ Menu ]
+            </button>
         </div>
     </div>
 </nav>
 
+<div id="mobile-menu" class="fixed inset-0 z-[100] bg-black translate-y-[-100%] transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] flex flex-col justify-center px-10">
+    <button id="menu-close" class="absolute top-10 right-10 text-white font-mono text-xs tracking-widest uppercase">
+        [ Zamknij ]
+    </button>
+
+    <div class="flex flex-col gap-6">
+        <span class="font-mono text-[#00f0ff] text-[10px] tracking-[0.5em] uppercase mb-4">Nawigacja</span>
+        <a href="#portfolio" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portfolio</a>
+        <a href="#koncerty" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Koncerty</a>
+        <a href="#eventy" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Eventy</a>
+        <a href="#portrety" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Portrety</a>
+        <a href="#analog" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">Analog</a>
+        <a href="#about" class="mobile-link text-5xl font-black text-white uppercase tracking-tighter italic hover:text-[#00f0ff]">O mnie</a>
+    </div>
+
+    <div class="absolute bottom-12 left-10 right-10 flex justify-between items-end border-t border-white/10 pt-8">
+        <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+            Socials:<br/>
+            <a href="#" class="text-white mt-2 inline-block">Instagram</a>
+        </div>
+        <div class="text-right font-mono text-[9px] text-zinc-700 uppercase">
+            © 2026 / AF
+        </div>
+    </div>
+</div>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=JetBrains+Mono:wght@500;800&display=swap');
 
-    /* Stylizacja czcionek */
-    a { font-family: 'Inter', sans-serif; }
+    a, .mobile-link { font-family: 'Inter', sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Animacja obrotu dla neonu */
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+    #mobile-menu.active {
+        transform: translateY(0);
     }
 
-    #main-nav {
-        will-change: transform;
+    /* Wyłączenie scrolla na body, gdy menu jest otwarte */
+    :global(body.menu-open) {
+        overflow: hidden;
     }
 </style>
 
 <script>
-    let lastScrollY = window.scrollY;
+    const menuTrigger = document.getElementById('menu-trigger');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
     const nav = document.getElementById('main-nav');
 
+    // Otwieranie
+    menuTrigger?.addEventListener('click', () => {
+        mobileMenu?.classList.add('active');
+        document.body.classList.add('menu-open');
+    });
+
+    // Zamykanie
+    const closeMenu = () => {
+        mobileMenu?.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    };
+
+    menuClose?.addEventListener('click', closeMenu);
+
+    // Zamykanie po kliknięciu w link
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Istniejący skrypt scrolla
+    let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-        if (!nav) return;
+        if (!nav || mobileMenu?.classList.contains('active')) return;
         const currentScrollY = window.scrollY;
 
-        // Skokowe chowanie/pokazywanie
         if (currentScrollY > lastScrollY && currentScrollY > 60) {
-            // Chowamy wyżej niż zwykle, żeby całkowicie zniknął z pola widzenia
             nav.style.transform = 'translateY(-180%)';
         } else {
-            // Powrót z lekkim opóźnieniem dla płynności (ease-out)
             nav.style.transform = 'translateY(0)';
         }
-        
         lastScrollY = currentScrollY;
     }, { passive: true });
 </script>

@@ -2,65 +2,66 @@
 const slides = [
     {
         desktop: "/images/hero/hero-1-desktop.jpg",
-        mobile: "/images/hero/hero-1-desktop.jpg",
+        mobile: "/images/hero/hero-1-mobile.jpg", 
         alt: "Koncert 1"
     },
     {
         desktop: "/images/hero/hero-2-desktop.jpg",
-        mobile: "/images/hero/hero-2-desktop.jpg",
+        mobile: "/images/hero/hero-2-mobile.jpg",
         alt: "Koncert 2"
     },
     {
         desktop: "/images/hero/hero-3-desktop.jpg",
-        mobile: "/images/hero/hero-3-desktop.jpg",
+        mobile: "/images/hero/hero-3-mobile.jpg",
         alt: "Koncert 3"
     },
 ];
+
+const currentYear = new Date().getFullYear();
 ---
+
 <section class="relative h-screen w-full overflow-hidden bg-black">
     
-    <div class="absolute inset-0 z-20 flex flex-col justify-center px-6 md:px-12 pointer-events-none">
-        <div class="w-full"> <div class="flex items-center gap-3 mb-6 animate-fade-in">
+    <div class="absolute inset-0 z-20 flex flex-col justify-end md:justify-center pb-24 md:pb-0 px-6 md:px-20 pointer-events-none">
+        <div class="w-full max-w-4xl animate-fade-in"> 
+            
+            <div class="flex items-center gap-3 mb-6">
                 <span class="w-2 h-2 rounded-full bg-[#00f0ff] animate-pulse"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-[#00f0ff]">Capture the adrenaline</span>
             </div>
 
-            <h1 class="font-black text-6xl md:text-8xl lg:text-[10rem] text-white uppercase leading-[0.8] tracking-[-0.05em] mb-10 pointer-events-auto">
+            <h1 class="font-black text-5xl md:text-8xl lg:text-[9rem] text-white uppercase leading-[0.8] tracking-[-0.05em] mb-10 pointer-events-auto">
                 Czysty <br />
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#00f0ff] to-[#f2ff00]">Hałas</span>
             </h1>
 
             <div class="max-w-md mb-12 pointer-events-auto">
-                <p class="font-mono text-zinc-300 text-xs md:text-sm leading-relaxed tracking-tight border-l-2 border-[#00f0ff] pl-4">
+                <p class="font-mono text-zinc-300 text-[10px] md:text-xs leading-relaxed tracking-tight border-l-2 border-[#00f0ff] pl-4">
                     <span class="text-white font-bold uppercase block mb-1">Energy / Chaos / Moments</span>
                     Fotografia koncertowa, która nie bierze jeńców. Uchwyć to, co inni przegapią w mroku.
                 </p>
             </div>
 
-            <div class="flex flex-wrap gap-6 pointer-events-auto">
-    
-    <div class="relative group">
-        <a href="#projects" class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden rounded-full bg-black transition-transform active:scale-95">
-            
-            <span class="absolute inset-0">
-                <span class="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#00f0ff_360deg)] group-hover:bg-[conic-gradient(from_0deg,transparent_0deg,transparent_180deg,#f2ff00_360deg)]"></span>
-            </span>
+            <div class="flex flex-wrap justify-center md:justify-start gap-6 pointer-events-auto">
+                <div class="relative group">
+                    <a href="#projects" class="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden rounded-full bg-black transition-transform active:scale-95">
+                        <span class="absolute inset-0">
+                            <span class="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_280deg,#00f0ff_360deg)] group-hover:bg-[conic-gradient(from_0deg,transparent_0deg,transparent_180deg,#f2ff00_360deg)]"></span>
+                        </span>
+                        <span class="absolute inset-[2px] bg-[#0a0a0a] rounded-full group-hover:bg-zinc-900 transition-colors duration-300"></span>
+                        <span class="relative z-10 font-mono text-[11px] font-black uppercase tracking-widest text-white group-hover:text-[#00f0ff]">
+                            Współpraca
+                        </span>
+                    </a>
+                </div>
 
-            <span class="absolute inset-[2px] bg-[#0a0a0a] rounded-full group-hover:bg-zinc-900 transition-colors duration-300"></span>
-
-            <span class="relative z-10 font-mono text-[11px] font-black uppercase tracking-widest text-white group-hover:text-[#00f0ff]">
-                Współpraca_
-            </span>
-        </a>
-    </div>
-
-    <a href="#about" class="group relative px-10 py-4 flex items-center justify-center rounded-full border border-white/10 hover:border-[#00f0ff] transition-all duration-500 overflow-hidden">
-        <span class="relative z-10 font-mono text-[11px] font-black uppercase text-white group-hover:text-[#00f0ff] tracking-widest">
-            O mnie
-        </span>
-        <div class="absolute inset-0 bg-[#00f0ff]/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-    </a>
-</div>
+                <a href="#about" class="group relative px-10 py-4 flex items-center justify-center rounded-full border border-white/10 hover:border-[#00f0ff] transition-all duration-500 overflow-hidden">
+                    <span class="relative z-10 font-mono text-[11px] font-black uppercase text-white group-hover:text-[#00f0ff] tracking-widest">
+                        O mnie
+                    </span>
+                    <div class="absolute inset-0 bg-[#00f0ff]/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -68,41 +69,60 @@ const slides = [
         {slides.map((slide, index) => (
             <div class={`hero-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`} data-index={index}>
                 <picture>
+                    <source media="(max-width: 767px)" srcset={slide.mobile} />
                     <source media="(min-width: 768px)" srcset={slide.desktop} />
-                    <img src={slide.mobile} alt={slide.alt} class="w-full h-full object-cover" />
+                    <img 
+                        src={slide.desktop} 
+                        alt={slide.alt} 
+                        class="w-full h-full object-cover" 
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
+                    />
                 </picture>
-                <div class="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent"></div>
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-black/70 md:via-transparent md:to-transparent"></div>
             </div>
         ))}
     </div>
 
-    <div class="absolute bottom-10 left-0 w-full z-30 px-6 md:px-12 flex justify-between items-end pointer-events-none">
-        <div class="flex flex-col gap-1">
-            <h2 class="text-white text-[10px] uppercase tracking-[0.5em] opacity-50">Selected Works</h2>
-            <div class="h-[1px] w-12 bg-[#00f0ff]"></div>
+    <div class="absolute bottom-10 right-12 z-30 hidden md:block pointer-events-none">
+        <span class="text-white/30 font-mono text-[10px] uppercase tracking-[0.3em] italic">
+            EST. 2024 / {currentYear}
+        </span>
+    </div>
+
+    <div class="absolute bottom-5 md:bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center group">
+        <span class="text-white font-mono text-[11px] uppercase tracking-widest mb-2 drop-shadow-[0_0_5px_rgba(0,240,255,0.8)] animate-pulse">
+            Scroll Down
+        </span>
+        <div class="relative h-10 w-[1px] bg-white/20 overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#00f0ff] to-transparent animate-scroll-fast"></div>
         </div>
-        <span class="text-white text-[10px] uppercase font-mono tracking-widest opacity-50">2023 — 2026</span>
     </div>
 </section>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;800&display=swap');
 
-    h1 {
-        font-family: 'Archivo Black', sans-serif;
-    }
-
-    .font-mono {
-        font-family: 'JetBrains Mono', monospace;
-    }
+    h1 { font-family: 'Archivo Black', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
 
     .animate-fade-in {
-        animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: fadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateX(-30px); }
+        from { opacity: 0; transform: translateX(-40px); }
         to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scroll-fast {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    .animate-scroll-fast {
+        animation: scroll-fast 2s linear infinite;
     }
 </style>
 
