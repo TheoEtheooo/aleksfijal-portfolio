@@ -26,7 +26,19 @@ const images = [
             </div>
             <h2 class="font-black text-6xl md:text-8xl text-white mb-6 uppercase tracking-tighter leading-none">
                 Portfolio <br/>
-                <span class="text-zinc-800 font-outline">2024—{currentYear}</span>
+                <div class="relative inline-block pr-2">
+                    <!-- Bottom layer (the gradient outline) -->
+                    <span
+                        aria-hidden="true"
+                        class="absolute inset-0 text-outline-gradient"
+                    >
+                        2024—{currentYear}
+                    </span>
+                    <!-- Top layer (the regular text, masking the center) -->
+                    <span class="relative font-outline-mask">
+                        2024—{currentYear}
+                    </span>
+                </div>
             </h2>
         </div>
 
@@ -98,4 +110,24 @@ const images = [
     h2 { font-family: 'Archivo Black', sans-serif; }
     .font-outline { -webkit-text-stroke: 1px #27272a; color: transparent; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    .text-outline-gradient {
+        -webkit-text-stroke: 3px transparent;
+        background: linear-gradient(to right, #00f0ff, #9f50ff, #00f0ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: slide 3s linear infinite;
+    }
+
+    .font-outline-mask {
+        color: black;
+    }
+
+    @keyframes slide {
+        to {
+            background-position: -200% center;
+        }
+    }
 </style>
