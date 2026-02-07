@@ -1,23 +1,19 @@
 ---
 import { Image } from 'astro:assets';
-// src/components/Work.astro
+
 const currentYear = new Date().getFullYear();
+// Tablica obiektów reprezentująca zdjęcia w galerii (źródło, tytuł, kategoria)
 const images = [
-    { src: "/images/portfolio/1.jpg", title: "Live Energy", category: "Koncert" },
-    { src: "/images/portfolio/2.jpg", title: "Backstage Access", category: "Event" },
-    { src: "/images/portfolio/3.jpg", title: "Vibe Check", category: "Portret" },
-    { src: "/images/portfolio/4.jpg", title: "Metal Night", category: "Koncert" },
-    { src: "/images/portfolio/5.jpg", title: "Street Life", category: "Analog" },
-    { src: "/images/portfolio/6.jpg", title: "Stage Fog", category: "Koncert" },
-    { src: "/images/portfolio/7.jpg", title: "Crowd Surfing", category: "Koncert" },
-    { src: "/images/portfolio/8.jpg", title: "Intimate Moment", category: "Portret" },
-    { src: "/images/portfolio/9.jpg", title: "City Lights", category: "Analog" },
-    { src: "/images/portfolio/10.jpg", title: "Gritty Vibes", category: "Event" },
-    { src: "/images/portfolio/11.jpg", title: "Bass Drop", category: "Koncert" },
-    { src: "/images/portfolio/12.jpg", title: "Moody Portrait", category: "Portret" },
-    { src: "/images/portfolio/13.jpg", title: "Analog Dreams", category: "Analog" },
-    { src: "/images/portfolio/14.jpg", title: "Live Wire", category: "Koncert" },
-    { src: "/images/portfolio/15.jpg", title: "Event Chaos", category: "Event" },
+    { src: "/images/portfolio/1.jpg", title: "", category: "" },
+    { src: "/images/portfolio/2.jpg", title: "", category: "" },
+    { src: "/images/portfolio/3.jpg", title: "", category: "" },
+    { src: "/images/portfolio/4.jpg", title: "", category: "" },
+    { src: "/images/portfolio/5.jpg", title: "", category: "" },
+    { src: "/images/portfolio/6.jpg", title: "", category: "" },
+    { src: "/images/portfolio/7.jpg", title: "", category: "" },
+    { src: "/images/portfolio/8.jpg", title: "", category: "" },
+    { src: "/images/portfolio/9.jpg", title: "", category: "" },
+    { src: "/images/portfolio/10.jpg", title: "", category: "" },
 ];
 ---
 
@@ -190,6 +186,7 @@ const images = [
 
     const grid = document.querySelector('.masonry-grid');
     if (grid) {
+        // Inicjalizacja układu Masonry po załadowaniu wszystkich obrazów
         imagesLoaded(grid, () => {
             new Masonry(grid, {
                 itemSelector: '.masonry-item',

@@ -62,10 +62,12 @@
     <div class="absolute bottom-12 left-10 right-10 flex justify-between items-end border-t border-white/10 pt-8">
         <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
             Socials:<br/>
-            <a href="#" class="text-white mt-2 inline-block">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61587347632998" class="hover:text-white transition-colors">Facebook //</a>
+            <a href="https://www.instagram.com/aleksanderfijal.photo/" class="hover:text-white transition-colors">Instagram //</a>
+            <a href="https://www.instagram.com/aleksfijal.eventphotography/" class="hover:text-white transition-colors">Instagram - Fotogragia Koncertowa</a>
         </div>
         <div class="text-right font-mono text-[9px] text-zinc-700 uppercase">
-            © 2026 / AF
+            ©  {new Date().getFullYear()} - AF
         </div>
     </div>
 </div>
@@ -83,6 +85,10 @@
     /* Wyłączenie scrolla na body, gdy menu jest otwarte */
     :global(body.menu-open) {
         overflow: hidden;
+    }
+
+    :global(html), :global(body) {
+        overflow-x: hidden;
     }
 
     @keyframes navEnter {
@@ -103,34 +109,40 @@
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const nav = document.getElementById('main-nav');
 
-    // Otwieranie
+    // Obsługa otwierania menu mobilnego
     menuTrigger?.addEventListener('click', () => {
         mobileMenu?.classList.add('active');
+        // Zablokuj scrollowanie body gdy menu jest otwarte
         document.body.classList.add('menu-open');
     });
 
-    // Zamykanie
+    // Funkcja zamykająca menu mobilne
     const closeMenu = () => {
         mobileMenu?.classList.remove('active');
+        // Przywróć scrollowanie body
         document.body.classList.remove('menu-open');
     };
 
+    // Podpięcie zamykania pod przycisk
     menuClose?.addEventListener('click', closeMenu);
 
-    // Zamykanie po kliknięciu w link
+    // Automatyczne zamykanie menu po kliknięciu w link nawigacyjny
     mobileLinks.forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
-    // Istniejący skrypt scrolla
+    // Logika ukrywania/pokazywania navbara podczas scrollowania
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
+        // Nie ukrywaj navbara jeśli menu mobilne jest aktywne
         if (!nav || mobileMenu?.classList.contains('active')) return;
         const currentScrollY = window.scrollY;
 
+        // Ukryj navbar przy scrollowaniu w dół (jeśli nie jesteśmy na samej górze)
         if (currentScrollY > lastScrollY && currentScrollY > 60) {
             nav.style.transform = 'translateY(-180%)';
         } else {
+            // Pokaż navbar przy scrollowaniu w górę
             nav.style.transform = 'translateY(0)';
         }
         lastScrollY = currentScrollY;

@@ -1,5 +1,5 @@
 ---
-// src/components/Footer.astro
+// Dynamiczne pobieranie aktualnego roku do automatycznej aktualizacji stopki
 const currentYear = new Date().getFullYear();
 ---
 <footer id="kontakt" class="bg-black border-t border-white/5 pt-24 pb-12">
@@ -14,10 +14,9 @@ const currentYear = new Date().getFullYear();
             <div class="space-y-4">
                 <div class="font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-4">Social Media</div>
                 <ul class="font-mono text-sm text-gray-400 space-y-2">
-                    <li><a href="#" class="hover:text-white transition-colors">/ Instagram - Fotogragia Koncertowa i Eventowa</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">/ Instagram - Fotografia Analogowa</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">/ Facebook - Fotografia</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">/ Facebook - Fotografia Analogowa</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61587347632998" class="hover:text-white transition-colors">/ Facebook - Fotografia</a></li>
+                    <li><a href="https://www.instagram.com/aleksfijal.eventphotography/" class="hover:text-white transition-colors">/ Instagram - Fotogragia Koncertowa i Eventowa</a></li>
+                    <li><a href="https://www.instagram.com/aleksanderfijal.photo/" class="hover:text-white transition-colors">/ Instagram - Fotografia Analogowa</a></li>
                 </ul>
             </div>
 
@@ -32,7 +31,7 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 font-mono text-[10px] text-gray-700 uppercase tracking-[0.3em]">
-            <p>© {currentYear} Aleksander Fijał</p>
+            <p>© {currentYear} - Aleksander Fijał</p>
         </div>
     </div>
 </footer>

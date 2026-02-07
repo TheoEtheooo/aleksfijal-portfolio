@@ -1,22 +1,24 @@
 ---
+// Konfiguracja slajdów dla karuzeli (osobne obrazy dla desktop/mobile)
 const slides = [
     {
         desktop: "/images/hero/hero-1-desktop.jpg",
         mobile: "/images/hero/hero-1-mobile.jpg", 
-        alt: "Koncert 1"
+        alt: "Hero 1"
     },
     {
         desktop: "/images/hero/hero-2-desktop.jpg",
         mobile: "/images/hero/hero-2-mobile.jpg",
-        alt: "Koncert 2"
+        alt: "Hero 2"
     },
     {
         desktop: "/images/hero/hero-3-desktop.jpg",
         mobile: "/images/hero/hero-3-mobile.jpg",
-        alt: "Koncert 3"
+        alt: "Hero 3"
     },
 ];
 
+// Aktualny rok używany w elementach dekoracyjnych (np. "EST. 2024 / ...")
 const currentYear = new Date().getFullYear();
 ---
 
@@ -195,37 +197,50 @@ const currentYear = new Date().getFullYear();
 <script>
     const slides = document.querySelectorAll('.hero-slide');
     let current = 0;
+    // Logika slidera: cykliczne przełączanie slajdów co 5 sekund
     if (slides.length > 1) {
         setInterval(() => {
+            // Ukryj obecny slajd
             slides[current].classList.replace('opacity-100', 'opacity-0');
+            // Oblicz indeks następnego slajdu
             current = (current + 1) % slides.length;
+            // Pokaż następny slajd
             slides[current].classList.replace('opacity-0', 'opacity-100');
         }, 5000);
     }
 
-    // Modal Logic
+    // Logika modala kontaktowego
     const contactTrigger = document.getElementById('contact-trigger');
     const contactModal = document.getElementById('contact-modal');
     const contactBackdrop = document.getElementById('contact-backdrop');
     const contactClose = document.getElementById('contact-close');
     const modalContent = contactModal?.querySelector('div.relative');
 
+    // Funkcja otwierająca modal
     function openContact() {
         if (!contactModal || !modalContent) return;
+        // Pokaż modal i włącz interakcje
         contactModal.classList.remove('opacity-0', 'pointer-events-none');
+        // Animacja skalowania treści
         modalContent.classList.remove('scale-95');
         modalContent.classList.add('scale-100');
+        // Zablokuj scrollowanie strony
         document.body.style.overflow = 'hidden';
     }
 
+    // Funkcja zamykająca modal
     function closeContact() {
         if (!contactModal || !modalContent) return;
+        // Ukryj modal
         contactModal.classList.add('opacity-0', 'pointer-events-none');
+        // Reset animacji skalowania
         modalContent.classList.add('scale-95');
         modalContent.classList.remove('scale-100');
+        // Przywróć scrollowanie strony
         document.body.style.overflow = '';
     }
 
+    // Podpięcie zdarzeń kliknięcia
     contactTrigger?.addEventListener('click', openContact);
     contactClose?.addEventListener('click', closeContact);
     contactBackdrop?.addEventListener('click', closeContact);
